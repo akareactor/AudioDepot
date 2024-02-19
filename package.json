@@ -1,0 +1,19 @@
+{
+	"name": "space.kulibin.audiodepot",
+	"version": "1.0.0",
+	"displayName": "Kulibin Audio Depot",
+	"description": "This is an audio depot facility",
+	"author": {
+		"name": "Kulibin.Space",
+		"email": "akareactor@mail.ru",
+		"url": "https://www.kulibin.space"
+	},
+	"samples": [
+		{
+			"displayName": "Demo",
+			"description": "Contains sample scene",
+			"path": "Samples~/Demo"
+		}
+	]
+
+}
