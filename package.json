@@ -8,9 +8,6 @@
 		"email": "akareactor@mail.ru",
 		"url": "https://www.kulibin.space"
 	},
-	"dependencies": {
-		"space.kulibin.messagebus": "1.0.0"
-	 },
 	"samples": [
 		{
 			"displayName": "Demo",
