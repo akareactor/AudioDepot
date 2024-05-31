@@ -9,7 +9,7 @@
 		"url": "https://www.kulibin.space"
 	},
 	"dependencies": {
-		"space.kulibin.messagebus": "https://github.com/akareactor/MessageBus.git",
+		"space.kulibin.messagebus": "https://github.com/akareactor/MessageBus.git"
 	 },
 	"samples": [
 		{
