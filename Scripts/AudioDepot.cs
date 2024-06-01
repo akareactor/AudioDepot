@@ -18,6 +18,20 @@ namespace KulibinSpace.AudioDepot {
 		public float volume = 1.0f;
 		public AudioClip audioclip;
 		public AudioclipPhase[] phases;
+
+		// рандомная фаза из списка или же прокси-объект фазы в случае, если фазы не указаны (упрощение работы с компонентом)
+		public AudioclipPhase Phase () {
+			AudioclipPhase ret;
+			if (phases == null || phases.Length == 0) {
+				ret = new AudioclipPhase();
+			} else {
+				ret = phases[Random.Range(0, phases.Length)];
+			}
+			// если длина клипа нулевая, то надо играть до конца. Ну так придумано. Смысл нуля может быть только такой (зачем ещё хранить фазу нулевой длины?)
+			if (ret.duration <= 0) ret.duration = audioclip.length - ret.time;
+		return ret;
+		}
+
 	}
 
 	//10:00 09.02.2019 Идея объединить часто используемые звуковые клипы в одном депо и посылать сюда именованные сигналы
@@ -69,17 +83,16 @@ namespace KulibinSpace.AudioDepot {
 		}
 		
 		// проиграть именованный клип
+		// Рандомная фаза из нескольких указанных
 		public void Play(string name) {
 			if ((src && !src.isPlaying) || !src) { // охрана от слишком быстрого переключения звуков
 				NamedClip clip = Find(name);
-				if (clip != null && clip.audioclip != null && clip.phases != null && clip.phases.Length > 0) {
+				//if (clip != null && clip.audioclip != null && clip.phases != null && clip.phases.Length > 0) {
+				if (clip != null && clip.audioclip != null) {
 					src.clip = clip.audioclip;
-					AudioclipPhase p = clip.phases[Random.Range(0, clip.phases.Length)];
-					if (p.duration > 0)
-						stopTime = Time.realtimeSinceStartup + p.duration;
-					else
-						stopTime = Time.realtimeSinceStartup + clip.audioclip.length - p.time;	
-					src.time = p.time;
+					AudioclipPhase phase = clip.Phase();
+					stopTime = Time.realtimeSinceStartup + phase.duration;
+					src.time = phase.time;
 					src.volume = clip.volume;
 					// независимый объект, при необходимости
 					if (clip.aside) {
@@ -87,7 +100,7 @@ namespace KulibinSpace.AudioDepot {
 						//AudioSource cloneSrc = Abstract.CopyComponent<AudioSource>(src, clone);
 						// поскольку CopyComponent копирует и Local File Identifier, пришлось от него отказаться.
 						AudioSource cloneSrc = clone.AddComponent<AudioSource>();
-						cloneSrc.time = p.time;
+						cloneSrc.time = phase.time;
 						cloneSrc.clip = clip.audioclip;
 						cloneSrc.outputAudioMixerGroup = src.outputAudioMixerGroup;
 						cloneSrc.volume = clip.volume;

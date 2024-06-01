@@ -617,16 +617,12 @@ MonoBehaviour:
     name: ButtonHover
     volume: 1
     audioclip: {fileID: 8300000, guid: f1903826e1c66784b9be6e13aece56d2, type: 3}
-    phases:
-    - time: 0
-      duration: 0.2
+    phases: []
   - aside: 0
     name: ButtonClick
     volume: 1
     audioclip: {fileID: 8300000, guid: e5f743b04d566c34f87304566241929b, type: 3}
-    phases:
-    - time: 0
-      duration: 0.2
+    phases: []
   debug: 0
   onPlayAudio: {fileID: 11400000, guid: 6283ea876866cd340842098a75735c41, type: 2}
 --- !u!4 &1763812025
@@ -759,6 +755,18 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5759210930955343704, guid: f604a5ebf41e6434ebf1bb5e1a11796a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6553
+      objectReference: {fileID: 0}
+    - target: {fileID: 5759210930955343704, guid: f604a5ebf41e6434ebf1bb5e1a11796a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6553
+      objectReference: {fileID: 0}
+    - target: {fileID: 5759210930955343704, guid: f604a5ebf41e6434ebf1bb5e1a11796a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6553
+      objectReference: {fileID: 0}
+    - target: {fileID: 5759210930955343704, guid: f604a5ebf41e6434ebf1bb5e1a11796a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -792,7 +800,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5759210930955343704, guid: f604a5ebf41e6434ebf1bb5e1a11796a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 45.4
       objectReference: {fileID: 0}
     - target: {fileID: 5759210930955343704, guid: f604a5ebf41e6434ebf1bb5e1a11796a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
