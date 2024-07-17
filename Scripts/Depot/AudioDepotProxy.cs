@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using KulibinSpace.MessageBus;
+﻿using KulibinSpace.MessageBus;
 using UnityEngine;
 
 // 10:45 09.02.2019 прокси для AudioDepot, экземпляров которых может быть в сцене несколько, собранных для разных целей.
@@ -13,7 +11,7 @@ namespace KulibinSpace.AudioDepot {
 		public GameMessageString playAudio;
 
 		public void Play (string name) {
-			if (!System.String.IsNullOrEmpty(name)) playAudio?.Invoke(name);
+			if (playAudio != null && !System.String.IsNullOrEmpty(name)) playAudio.Invoke(name);
 		}
 		
 	}

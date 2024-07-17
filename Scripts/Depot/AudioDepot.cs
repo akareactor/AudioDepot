@@ -13,6 +13,7 @@ namespace KulibinSpace.AudioDepot {
 
 	[System.Serializable]
 	public class NamedClip {
+
 		public bool aside = false; // выделить клип в отдельный объект, который будет звучать до конца независимо от хоста
 		public string name;
 		public float volume = 1.0f;
@@ -50,7 +51,6 @@ namespace KulibinSpace.AudioDepot {
 		static AudioDepot instance; // персистентность
 		public GameMessageString onPlayAudio;
 
-
 		void Awake () {
 			if (persistent) {
 				if (instance == null) {
@@ -81,10 +81,19 @@ namespace KulibinSpace.AudioDepot {
 			}
 		return ret;
 		}
+
+        // 2024-07-17 13:31:31 некий задел на проигрывание скриптуемого.
+        public void Play (PhasedAudioClip phasedAudioClip) {
+			if ((src && !src.isPlaying) || !src) { // охрана от слишком быстрого переключения звуков
+                if (phasedAudioClip != null) {
+                    stopTime = phasedAudioClip.Play(src);
+                }
+            }
+        }
 		
 		// проиграть именованный клип
 		// Рандомная фаза из нескольких указанных
-		public void Play(string name) {
+		public void Play (string name) {
 			if ((src && !src.isPlaying) || !src) { // охрана от слишком быстрого переключения звуков
 				NamedClip clip = Find(name);
 				//if (clip != null && clip.audioclip != null && clip.phases != null && clip.phases.Length > 0) {
@@ -105,7 +114,7 @@ namespace KulibinSpace.AudioDepot {
 						cloneSrc.outputAudioMixerGroup = src.outputAudioMixerGroup;
 						cloneSrc.volume = clip.volume;
 						// дополнительный компонент 
-						AudioStop astop = clone.AddComponent<AudioStop>() as AudioStop;
+						AudioStop astop = clone.AddComponent<AudioStop>();
 						astop.stopTime = stopTime; // глобальный момент уничтожения звука
 						astop.src = cloneSrc;
 						cloneSrc.Play();
