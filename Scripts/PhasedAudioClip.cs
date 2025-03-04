@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace KulibinSpace.AudioDepot {
 
-[CreateAssetMenu(fileName = "Phased Audio Clip object", menuName = "ScriptableObjects/Phased Audio clip object")]
+[CreateAssetMenu(fileName = "Phased Audio Clip object", menuName = "Kulibin Space/Scriptable Objects/Audio/Phased Audio clip object")]
 
 // 2024-07-17 13:00:04 замораживаю разработку скриптуемого клипа, т.к. неясно, как останавливать звук по времени.
 
