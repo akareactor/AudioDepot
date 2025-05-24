@@ -10,6 +10,7 @@ namespace KulibinSpace.AudioDepot {
         public float minDistance = 1f;
         public float maxDistance = 50f;
         public AudioRolloffMode rolloffMode = AudioRolloffMode.Logarithmic;
+        public AnimationCurve customRolloff = AnimationCurve.Linear(0f, 1f, 1f, 0f);
         public bool loop = false;
         public bool playOnAwake = false;
     }

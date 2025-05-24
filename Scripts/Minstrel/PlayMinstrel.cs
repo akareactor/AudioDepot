@@ -51,7 +51,12 @@ namespace KulibinSpace.AudioDepot {
                 source.spatialBlend = config.spatialBlend;
                 source.minDistance = config.minDistance;
                 source.maxDistance = config.maxDistance;
-                source.rolloffMode = config.rolloffMode;
+                if (config.rolloffMode == AudioRolloffMode.Custom) {
+                    source.rolloffMode = AudioRolloffMode.Custom;
+                    source.SetCustomCurve(AudioSourceCurveType.CustomRolloff, config.customRolloff);
+                } else {
+                    source.rolloffMode = config.rolloffMode;
+                }
                 source.loop = config.loop;
                 source.playOnAwake = config.playOnAwake;
                 // Дополнительно:
