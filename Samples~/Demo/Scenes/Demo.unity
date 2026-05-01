@@ -2075,7 +2075,9 @@ MonoBehaviour:
     name: ButtonHover
     volume: 1
     audioclip: {fileID: 8300000, guid: f1903826e1c66784b9be6e13aece56d2, type: 3}
-    phases: []
+    phases:
+    - time: 0
+      duration: 1
   - aside: 0
     name: ButtonClick
     volume: 1
